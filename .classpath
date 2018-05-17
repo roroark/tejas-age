@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path="Tejas-simd/Tejas-Simulator/Tejas/src/simulator"/>
-	<classpathentry kind="lib" path="Tejas-simd/Tejas-Simulator/Tejas/jars/tejas.jar"/>
-	<classpathentry kind="lib" path="Trash/Tejas-simd [retired May 5]/Tejas-Simulator/Tejas/jars/tejas.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="output" path="Trash/Tejas-simd [retired May 5]/Tejas-Simulator/Tejas/bin"/>
-</classpath>
