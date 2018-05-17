@@ -1,0 +1,73 @@
+#!/bin/bash
+
+WHAT_ARE_WE_CALLING_THIS="Tejas AGE"
+
+clear
+
+echo [$WHAT_ARE_WE_CALLING_THIS] "Tejas AGE (Auto Graphing Environment)"
+echo ''
+
+# Clean up mess
+#!/bin/bash
+
+rm -rf Reports/*
+rm -rf Plots/*
+mkdir Reports/ExecutionLogs
+mkdir Reports/OutputFiles
+mkdir Plots/Absolute
+mkdir Plots/Relative
+
+#
+# BUILD
+#
+
+echo [$WHAT_ARE_WE_CALLING_THIS] Buiding JAR.
+
+./Python/age_build.py | grep 'BUILD' | sed -e 's/^/[ant] /'
+echo ''
+
+
+#
+# SIMULATE
+#
+
+# Place config files here
+rm -rf Temp
+mkdir Temp
+
+echo [$WHAT_ARE_WE_CALLING_THIS] Starting Simulations.
+python ./Python/age_simulate.py | sed -e 's/^/[age_simulate] /'
+echo ''
+
+# Cleanup Config Files
+rm -rf Temp
+
+
+#
+# VERIFY OUTPUT
+#
+
+echo [$WHAT_ARE_WE_CALLING_THIS] Verifying Output.
+./Python/age_verify_output.py | sed -e 's/^/[age_verify_output] /'
+echo ''
+
+
+#
+# EXTRACT RESULTS
+#
+
+echo [$WHAT_ARE_WE_CALLING_THIS] Extracting Results.
+./Python/age_extract.py | sed -e 's/^/[age_extract] /'
+echo ''
+
+#
+# PLOT RESULTS
+#
+
+echo [$WHAT_ARE_WE_CALLING_THIS] Plotting Results.
+./Python/age_plot.py | sed -e 's/^/[age_plot] /'
+# Special Energy Plot
+./Python/age_enplot.py | sed -e 's/^/[age_enplot] /'
+echo ''
+
+echo [$WHAT_ARE_WE_CALLING_THIS] Completed Run.

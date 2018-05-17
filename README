@@ -1,0 +1,61 @@
+To integrate with your dev environment
+======================================
+
+Points 1-3 are a one-time configuration.
+Point 4 for everytime you want to change inputs to be simulated.
+
+
+######################
+
+
+1. Close your eclipse project, move your Tejas folder inside the tejas-age directory.
+Note: The 'Tejas' folder is not the 'Tejas-Simulator' folder but the Tejas folder inside it.
+If the folder is named anything other than 'Tejas', please rename it to 'Tejas' or change a line in Python/age_config.py
+
+
+2. Copy your config file into the tejas-age diretory.
+Again, if your file is named anything other than config.xml, you may rename it or change a line in Python/age_config.py
+
+
+3. Change the line base=".." line in Python/age_config.py.
+This should be the root directory of tejas-age with the trailing / removed eg: /home/dell/tejas-age.
+
+4. Specify inputs.
+Format for input.csv file:
+
+Each line is of the form:
+<input-name>, <executable with args>
+
+A line like:
+#<input-name>, <executable with args>
+will be ignored.
+
+<input-name> is used as graph labels.
+<executable with args> may not contain commas (as of now, feel free to change this behavior in Python/age_simulate.py).
+
+
+5. ./run
+As simple as that
+
+######################
+
+A note on good practice:
+Please use git to version control your simulations.
+This is better than creating infinite backups of plots.
+
+
+######################
+
+Footnotes:
+
+tejas-age is roughly 300 lines of Python.
+< 1 hour to learn.
+
+Follow the execution in 'run'.
+Read Python/age_config.py first. This file contains common parameters used everywhere.
+
+It is essential to read the code if you want customised plots.
+Python/age_plot.py plots relative and absolute graphs. Not all may be relavant eg relative L1 hitrate.
+Python/age_enplot.py is for energy plots.
+
+
